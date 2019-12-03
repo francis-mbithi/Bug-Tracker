@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class User {
     private String username;
     private String email;
@@ -32,5 +34,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
