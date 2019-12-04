@@ -9,7 +9,7 @@ public class Bug {
 
     public Bug(String content, String category) {
         this.content = content;
-        this.category = category;
+        this.category = category; 
     }
 
     public int getId() {
