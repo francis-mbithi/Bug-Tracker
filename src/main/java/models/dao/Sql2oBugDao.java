@@ -23,6 +23,7 @@ public class Sql2oBugDao implements BugDao {
         }
     }
 
+
    @Override
     public List<Bug> getAll() {
         try(Connection con= DB.sql2o.open()){

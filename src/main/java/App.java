@@ -1,5 +1,6 @@
 import models.Bug;
 import models.dao.Sql2oBugDao;
+import models.dao.Sql2oBugDao;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -28,6 +29,20 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post a bug
+        post("/bugs/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String username = request.queryParams("content");
+            String category = request.queryParams("category");
+            try {
+                Bug bug = new Bug (username, category);
+                bugDao.add(bug);
+            }catch (IllegalArgumentException exception){
+                System.out.println("Please fill in all input fields.");
+            }
+            response .redirect("/bugs");
+            return null;
+        });new HandlebarsTemplateEngine();
+
         get("/bug/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "add-bug.hbs");
