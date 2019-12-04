@@ -11,7 +11,7 @@ public class Sql2oCommentDao implements CommentDao {
 
     @Override
     public void add(Comment comment) {
-        String sql="INSERT INTO comments (content,time_post,user_id) VALUES (:content,:time_post,:user_id)";
+        String sql="INSERT INTO comments (username,content,time_post,upvote,downvote,bug_id) VALUES (:username,:content,:time_post,:upvote,:downvote,:bug_id)";
         try(Connection con= DB.sql2o.open()){
             int id =(int) con.createQuery(sql,true)
                     .bind(comment)

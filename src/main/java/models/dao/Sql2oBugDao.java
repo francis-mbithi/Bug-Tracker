@@ -11,7 +11,7 @@ public class Sql2oBugDao implements BugDao {
 
     @Override
     public void add(Bug bug) {
-        String sql="INSERT INTO bugs (content,category,user_id) VALUES (:content,:category,:user_id)";
+        String sql="INSERT INTO bugs (content,category) VALUES (:content,:category)";
         try(Connection con= DB.sql2o.open()){
             int id =(int) con.createQuery(sql,true)
                     .bind(bug)
