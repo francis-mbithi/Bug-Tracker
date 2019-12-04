@@ -12,3 +12,9 @@
     font-weight: 700;
     font-size: 24px;
 }
+.navbar{
+    border-top: 3px solid #F48024;
+}
+.nav-item a:hover{
+    border-bottom: 2px solid #F48024;
+}

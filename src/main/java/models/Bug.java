@@ -8,11 +8,10 @@ public class Bug {
     private String category;
     private int user_id;
 
-    public Bug(String content, String category, int user_id,int id) {
+    public Bug(String content, String category, int user_id) {
         this.content = content;
         this.category = category;
         this.user_id = user_id;
-        this.id =id;
     }
 
     public int getId() {
