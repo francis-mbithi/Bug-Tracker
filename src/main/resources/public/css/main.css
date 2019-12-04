@@ -29,6 +29,12 @@ section h1{
     color: #ffffff;
     padding-top: 65px;
 }
+.textarea {
+    border: 1px solid #888;
+}
+.button{
+    color:orange;
+
 
 .buttons{
     margin-top: 75px;
@@ -43,4 +49,5 @@ section h1{
 .buttons button:hover{
     color: #ffffff;
     background-color: orangered;
+
 }
