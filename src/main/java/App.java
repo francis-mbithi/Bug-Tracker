@@ -22,7 +22,8 @@ public class App {
 
         get("/bugs", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-//            List<Bug> bugs = bugDao.getAll();
+            List<Bug> bugs = bugDao.getAll();
+            System.out.println(bugs);
             return new ModelAndView(model, "bugs.hbs");
         }, new HandlebarsTemplateEngine());
 

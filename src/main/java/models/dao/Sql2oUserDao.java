@@ -1,5 +1,4 @@
 package models.dao;
-import javafx.animation.ScaleTransition;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
