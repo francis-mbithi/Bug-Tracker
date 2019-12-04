@@ -1,5 +1,8 @@
 package models;
 
+import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
+
 import java.util.Objects;
 
 public class Bug {
@@ -51,4 +54,7 @@ public class Bug {
     public int hashCode() {
         return Objects.hash(id, content, category);
     }
+
+
+
 }
