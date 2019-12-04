@@ -32,5 +32,14 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "add-bug.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //get bug by id
+        get("/bugs/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<>();
+          int id = Integer.parseInt(request.params(":id"));
+          Bug bug = bugDao.findById(id);
+          model.put("bug", bug);
+          return new ModelAndView(model, "bug_details.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
