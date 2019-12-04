@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+#nav{
+    /*font-family: 'Lobster', cursive;*/
+    font-weight: 700;
+    font-size: 24px;
+}
