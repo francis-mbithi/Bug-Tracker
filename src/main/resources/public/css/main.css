@@ -29,6 +29,18 @@ section h1{
     color: #ffffff;
     padding-top: 65px;
 }
-#search{
-    width:370px;
+
+.buttons{
+    margin-top: 75px;
+}
+.buttons button{
+    width: 225px;
+    height: 50px;
+    border-radius: 25px;
+    color: #ffffff;
+    background-color: #F48024;
+}
+.buttons button:hover{
+    color: #ffffff;
+    background-color: orangered;
 }
