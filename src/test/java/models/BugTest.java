@@ -9,7 +9,8 @@ public class BugTest {
 
     //Helper Method
     public Bug setupBug(){
-        return new Bug("content","True","category",1);
+//        return new Bug("content","True","category",1);
+        return new Bug("content","category");
     }
     @Test
     public void BugInstantiatesCorrectly(){
