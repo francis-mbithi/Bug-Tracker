@@ -1,4 +1,5 @@
 import models.Bug;
+import models.dao.BugDao;
 import models.dao.Sql2oBugDao;
 import models.dao.Sql2oBugDao;
 import spark.ModelAndView;
@@ -31,10 +32,10 @@ public class App {
         //post a bug
         post("/bugs/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            String username = request.queryParams("content");
+            String content = request.queryParams("content");
             String category = request.queryParams("category");
             try {
-                Bug bug = new Bug (username, category);
+                Bug bug = new Bug (content, category);
                 bugDao.add(bug);
             }catch (IllegalArgumentException exception){
                 System.out.println("Please fill in all input fields.");
