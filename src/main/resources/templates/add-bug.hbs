@@ -1,5 +1,38 @@
 {{#partial "content"}}
-    <h1 class="text-center">Post your bug here</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-3">
+                <div class="form-dark">
+                    <div class="text-black rgba-stylish-strong py-5 px-5 z-depth-4">
+                        <div class="text-center">
+                            <h1 class="text-center">Post your bug here</h1>
+                            <hr>
+                            <form action="/bugs/new" method="post">
+                                <label for="title">Title</label>
+                                <input type="text" id="title" class="form-control" name="title">
+                                <br>
+                                <select class="browser-default custom-select" id="language" name="category">
+                                    <option selected>Select language</option>
+                                    <option value="java">Java</option>
+                                    <option value="python">Python</option>
+                                    <option value="java script">Java Script</option>
+                                    <option value="c#">C#</option>
+                                    <option value="c++">C++</option>
+                                </select>
+                                <br>
+                                <br>
+                                <label for="textarea">Add more details of your bug here</label>
+                                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {{/partial}}
 
 {{> layout.hbs}}

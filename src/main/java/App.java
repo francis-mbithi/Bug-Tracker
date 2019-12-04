@@ -1,4 +1,6 @@
 import models.Bug;
+import models.dao.BugDao;
+import models.dao.Sql2oBugDao;
 import models.dao.Sql2oBugDao;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -23,14 +25,37 @@ public class App {
         get("/bugs", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Bug> bugs = bugDao.getAll();
-            System.out.println(bugs);
+            model.put("bugs", bugs);
             return new ModelAndView(model, "bugs.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post a bug
+        post("/bugs/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String content = request.queryParams("content");
+            String category = request.queryParams("category");
+            try {
+                Bug bug = new Bug (content, category);
+                bugDao.add(bug);
+            }catch (IllegalArgumentException exception){
+                System.out.println("Please fill in all input fields.");
+            }
+            response .redirect("/bugs");
+            return null;
+        });new HandlebarsTemplateEngine();
+
         get("/bug/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "add-bug.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get bug by id
+        get("/bugs/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<>();
+          int id = Integer.parseInt(request.params(":id"));
+          Bug bug = bugDao.findById(id);
+          model.put("bug", bug);
+          return new ModelAndView(model, "bug_details.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }
