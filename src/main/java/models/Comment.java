@@ -5,14 +5,44 @@ import java.util.Objects;
 
 public class Comment {
     private int id;
+    private String username;
     private String content;
     private Timestamp time_post;
-    private int user_id;
+    private int upvote;
+    private int downvote;
+    private int bug_id;
 
-    public Comment(String content, Timestamp time_post, int user_id) {
+    public Comment(String username,String content, Timestamp time_post,int upvote, int downvote, int bug_id) {
+        this.username = username;
         this.content = content;
         this.time_post = time_post;
-        this.user_id = user_id;
+        this.upvote = upvote;
+        this.downvote = downvote;
+        this.bug_id = bug_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getUpvote() {
+        return upvote;
+    }
+
+    public void setUpvote(int upvote) {
+        this.upvote = upvote;
+    }
+
+    public int getDownvote() {
+        return downvote;
+    }
+
+    public void setDownvote(int downvote) {
+        this.downvote = downvote;
     }
 
     public int getId() {
@@ -39,12 +69,12 @@ public class Comment {
         this.time_post = time_post;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getBug_id() {
+        return bug_id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setBug_id(int user_id) {
+        this.bug_id = user_id;
     }
 
     @Override
@@ -53,13 +83,16 @@ public class Comment {
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
         return id == comment.id &&
-                user_id == comment.user_id &&
+                upvote == comment.upvote &&
+                downvote == comment.downvote &&
+                bug_id == comment.bug_id &&
+                Objects.equals(username, comment.username) &&
                 Objects.equals(content, comment.content) &&
                 Objects.equals(time_post, comment.time_post);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, time_post, user_id);
+        return Objects.hash(id, username, content, time_post, upvote, downvote, bug_id);
     }
 }
