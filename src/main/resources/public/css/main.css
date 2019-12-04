@@ -14,7 +14,18 @@
 }
 .navbar{
     border-top: 3px solid #F48024;
+    border-bottom: 1px solid lightgray;
 }
 .nav-item a:hover{
     border-bottom: 2px solid #F48024;
+}
+section{
+    height: 65vh;
+    background-color: #2b2d6e;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 83%, 0 100%);
+}
+section h1{
+    color: #ffffff;
+    padding-top: 65px;
 }
