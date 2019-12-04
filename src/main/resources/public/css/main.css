@@ -29,3 +29,9 @@ section h1{
     color: #ffffff;
     padding-top: 65px;
 }
+.textarea {
+    border: 1px solid #888;
+}
+.button{
+    color:orange;
+}
