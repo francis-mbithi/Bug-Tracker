@@ -23,7 +23,8 @@ public class App {
 
         get("/bugs", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-//            List<Bug> bugs = bugDao.getAll();
+            List<Bug> bugs = bugDao.getAll();
+            model.put("bugs", bugs);
             return new ModelAndView(model, "bugs.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -45,6 +46,15 @@ public class App {
         get("/bug/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "add-bug.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get bug by id
+        get("/bugs/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<>();
+          int id = Integer.parseInt(request.params(":id"));
+          Bug bug = bugDao.findById(id);
+          model.put("bug", bug);
+          return new ModelAndView(model, "bug_details.hbs");
         }, new HandlebarsTemplateEngine());
     }
 }

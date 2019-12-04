@@ -34,4 +34,20 @@ section h1{
 }
 .button{
     color:orange;
+
+
+.buttons{
+    margin-top: 75px;
+}
+.buttons button{
+    width: 225px;
+    height: 50px;
+    border-radius: 25px;
+    color: #ffffff;
+    background-color: #F48024;
+}
+.buttons button:hover{
+    color: #ffffff;
+    background-color: orangered;
+
 }
