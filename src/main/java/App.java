@@ -1,4 +1,5 @@
 import models.Bug;
+import models.dao.BugDao;
 import models.dao.Sql2oBugDao;
 import models.dao.Sql2oBugDao;
 import spark.ModelAndView;
