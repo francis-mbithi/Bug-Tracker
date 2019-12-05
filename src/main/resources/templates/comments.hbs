@@ -1,0 +1,22 @@
+{{#partial "content"}}
+    <h1 class="text-center">Bugs Comments</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {{#each comments}}
+                    <a href="/comments/{{id}}">
+                        <div class="card p-4 mt-3">
+                            <h3>Username: {{username}}</h3>
+                            <p>{{content}}</p>
+                        </div>
+                    </a>
+                   <p> {{time_post}}</p>
+                    <p>{{upvote}}</p>
+                    <p>{{downvote}}</p>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

@@ -12,10 +12,9 @@ public class Comment {
     private int downvote;
     private int bug_id;
 
-    public Comment(String username,String content, Timestamp time_post,int upvote, int downvote, int bug_id) {
+    public Comment(String username,String content,int upvote, int downvote, int bug_id) {
         this.username = username;
         this.content = content;
-        this.time_post = time_post;
         this.upvote = upvote;
         this.downvote = downvote;
         this.bug_id = bug_id;

@@ -12,7 +12,6 @@ public interface BugDao {
 
     List<Bug> getAll();
 
-
     void deleteById(int id);
 
 
