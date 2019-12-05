@@ -11,7 +11,7 @@ public class Sql2oCommentDao implements CommentDao {
 
     @Override
     public void add(Comment comment) {
-        String sql="INSERT INTO comments (username,content,time_post,upvote,downvote,bug_id) VALUES (:username,:content,:time_post,:upvote,:downvote,:bug_id)";
+        String sql="INSERT INTO comments (username,content,upvote,downvote,bug_id) VALUES (:username,:content,:upvote,:downvote,:bug_id)";
         try(Connection con= DB.sql2o.open()){
             int id =(int) con.createQuery(sql,true)
                     .bind(comment)
@@ -32,11 +32,11 @@ public class Sql2oCommentDao implements CommentDao {
     }
 
     @Override
-    public Comment findById(int id) {
+    public List<Comment> findById(int bug_id) {
         try (Connection con = DB.sql2o.open()) {
-            return con.createQuery("SELECT * FROM comments WHERE id=:id")
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Comment.class);
+            return con.createQuery("SELECT * FROM comments WHERE bug_id=:bug_id")
+                    .addParameter("bug_id", bug_id)
+                    .executeAndFetch(Comment.class);
         }
     }
 
