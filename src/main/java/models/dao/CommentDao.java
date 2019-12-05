@@ -8,9 +8,9 @@ public interface CommentDao {
 
     void add (Comment comment);
 
-    Comment findById(int id);
+    List<Comment> findById (int id);
 
-    List<Comment> getAll();
+    List<Comment> getAll ();
 
 
     void deleteById(int id);
