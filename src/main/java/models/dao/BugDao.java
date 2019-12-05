@@ -14,6 +14,9 @@ public interface BugDao {
 
     void deleteById(int id);
 
+    //void deleteById(int id);
+
+
 
 
 }

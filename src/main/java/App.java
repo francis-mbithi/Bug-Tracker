@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
 import static spark.Spark.*;
 
 public class App {
@@ -57,14 +58,13 @@ public class App {
         //get bug by id
         get("/bugs/:id", (request, response) -> {
           Map<String, Object> model = new HashMap<>();
-          int id = Integer.parseInt(request.params(":id"));
+          int id = parseInt(request.params(":id"));
           Bug bug = bugDao.findById(id);
             List<Comment> comments = commentDao.findById(id);
             model.put("comments", comments);
           model.put("bug", bug);
           return new ModelAndView(model, "bug_details.hbs");
         }, new HandlebarsTemplateEngine());
-
         // post a Comment
         post("/success", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -85,6 +85,12 @@ public class App {
         get("/success", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "success.hbs");
+        get("/bugs/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            bugDao.findById(parseInt(request.params(":id"))).deleteById();
+            response.redirect("/bugs");
+            return null;
+
         }, new HandlebarsTemplateEngine());
     }
 }
