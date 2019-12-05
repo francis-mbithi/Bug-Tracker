@@ -6,6 +6,10 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
+.nav-brand img{
+  height: 3rem;
+  border-radius: 50%;
+}
 
 #nav{
     /*font-family: 'Lobster', cursive;*/
