@@ -59,24 +59,18 @@ public class App {
           Map<String, Object> model = new HashMap<>();
           int id = Integer.parseInt(request.params(":id"));
           Bug bug = bugDao.findById(id);
+            List<Comment> comments = commentDao.findById(id);
+            model.put("comments", comments);
           model.put("bug", bug);
           return new ModelAndView(model, "bug_details.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get Comments
-        get("/comments", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Comment> comment = commentDao.getAll();
-            model.put("comment", comment);
-            return new ModelAndView(model, "comments.hbs");
-        }, new HandlebarsTemplateEngine());
-
         // post a Comment
-        post("/comments/new", (request, response) -> {
+        post("/success", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String username = request.queryParams("username");
             String content = request.queryParams("content");
-            int bug_id =Integer.parseInt(request.queryParams("id"));
+            int bug_id = Integer.parseInt(request.queryParams("bug_id"));
             Timestamp timestamp = new Timestamp(new Date().getTime());
             try {
                 Comment comment = new Comment (username, content,0,0,bug_id);
@@ -84,8 +78,13 @@ public class App {
             }catch (IllegalArgumentException exception){
                 System.out.println("Please fill in all input fields.");
             }
-            response .redirect("/comments");
+            response.redirect("/success");
             return null;
         });new HandlebarsTemplateEngine();
+
+        get("/success", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
