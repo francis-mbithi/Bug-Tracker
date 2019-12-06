@@ -6,26 +6,38 @@
                         <h3>Language: {{bug.category}}</h3>
                         <p>{{bug.content}}</p>
                     </div>
+                {{#each comments}}
+                    <div class="row mt-4">
+                        <img src="/images/user.png" alt="Avatar" class="avatar mr-4">
+                        <h3>Username: {{username}}</h3>
+                    </div>
+                    <h3 class="ml-4">Comment:{{content}}</h3>
+                    <hr>
+                {{/each}}
             </div>
         </div>
         <h3 class="text-center">Comments:</h3>
         <div class="row">
-            <form>
+            <form method="post" action="/success">
                 <div class="col-xs-">
                     <label for="username">User Name</label>
                     <input type="text" name="username" class="form-control" id="username" placeholder="Username input placeholder">
                 </div>
+                <div class="col-xs-">
+                    <label for="bug_id">Bug Id</label>
+                    <input type="number" name="bug_id" class="form-control" id="bug_id" placeholder="Username input placeholder">
+                </div>
                 <div class="col-xs-4">
-                    <label for="Comment">Comment</label> <br>
-                    <textarea name = "comment" placeholder = "Message" id = "comment" ></textarea>
+                    <label for="content">Comment</label> <br>
+                    <input type="text" name ="content" placeholder = "Message" id = "comment" ></input>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
                 </div>
             </form>
         </div>
     </div>
-    <h3 class="text-center">Comments</h3>
+
 {{/partial}}
 
 {{> layout.hbs}}
